@@ -1,21 +1,38 @@
-// Smooth scrolling for navigation links
 
-document.querySelectorAll('nav a').forEach(link => {
 
-    link.addEventListener('click', function(e){
+// =============================
+// Smooth Scrolling
+// =============================
+
+
+document.querySelectorAll("nav a").forEach(link => {
+
+
+    link.addEventListener("click", function(e){
+
 
         e.preventDefault();
 
-        const target =
-        document.querySelector(this.getAttribute('href'));
 
-        target.scrollIntoView({
+        const section =
+        document.querySelector(
+        this.getAttribute("href")
+        );
 
-            behavior:"smooth"
 
-        });
+        if(section){
+
+            section.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+        }
+
 
     });
+
 
 });
 
@@ -23,25 +40,34 @@ document.querySelectorAll('nav a').forEach(link => {
 
 
 
-// Navbar effect while scrolling
 
-window.addEventListener("scroll", function(){
-
-
-    const nav = document.querySelector("nav");
+// =============================
+// Navbar Background Change
+// =============================
 
 
-    if(window.scrollY > 50){
+window.addEventListener("scroll",()=>{
+
+
+    const nav =
+    document.querySelector("nav");
+
+
+    if(window.scrollY > 60){
+
 
         nav.style.background =
-        "rgba(5,8,22,0.95)";
+        "rgba(5,8,22,0.98)";
+
 
     }
 
     else{
 
+
         nav.style.background =
-        "rgba(5,8,22,0.8)";
+        "rgba(5,8,22,0.95)";
+
 
     }
 
@@ -54,114 +80,125 @@ window.addEventListener("scroll", function(){
 
 
 
-// Typing animation
+// =============================
+// Typing Effect
+// =============================
 
 
 const roles = [
+
 
 "IoT & Robotics Engineer",
 
 "Embedded Systems Developer",
 
-"AI & Automation Enthusiast",
+"Robotics Researcher",
 
-"Robotics Researcher"
+"AI & Automation Enthusiast"
+
 
 ];
 
 
-let index = 0;
+
+let roleIndex = 0;
 
 let charIndex = 0;
 
+let deleting = false;
 
-const roleElement =
+
+
+const roleText =
 document.querySelector(".hero-text h2");
 
 
 
-function typeEffect(){
 
-
-    if(charIndex < roles[index].length){
-
-
-        roleElement.textContent +=
-        roles[index].charAt(charIndex);
-
-
-        charIndex++;
-
-
-        setTimeout(typeEffect,100);
-
-
-    }
-
-
-    else{
-
-
-        setTimeout(deleteEffect,1500);
-
-
-    }
-
-
-}
+function typeAnimation(){
 
 
 
+    let current =
+    roles[roleIndex];
 
 
-function deleteEffect(){
+
+    if(!deleting){
 
 
-    if(charIndex > 0){
+
+        roleText.textContent =
+        current.substring(
+            0,
+            charIndex++
+        );
 
 
-        roleElement.textContent =
-        roles[index].substring(0,charIndex-1);
+
+        if(charIndex > current.length){
 
 
-        charIndex--;
+            deleting=true;
 
 
-        setTimeout(deleteEffect,50);
+            setTimeout(typeAnimation,1500);
 
 
-    }
+            return;
 
-
-    else{
-
-
-        index++;
-
-
-        if(index >= roles.length){
-
-            index=0;
 
         }
 
 
-        setTimeout(typeEffect,500);
+    }
+
+
+
+    else{
+
+
+        roleText.textContent =
+        current.substring(
+            0,
+            charIndex--
+        );
+
+
+
+        if(charIndex < 0){
+
+
+            deleting=false;
+
+
+            roleIndex++;
+
+
+
+            if(roleIndex >= roles.length){
+
+                roleIndex=0;
+
+            }
+
+
+        }
 
 
     }
+
+
+
+    setTimeout(typeAnimation,
+    deleting ? 50 : 100);
 
 
 }
 
 
 
-
-// Start animation
-
-roleElement.textContent="";
-
-typeEffect();
+typeAnimation();
 
 
 
@@ -169,18 +206,26 @@ typeEffect();
 
 
 
+// =============================
+// Scroll Reveal Animation
+// =============================
 
-// Scroll reveal animation
 
 
-const cards =
+const revealElements =
+
 document.querySelectorAll(
-".card, .skill-card, .project-card"
+
+".card, .project-card, .certificate, .thesis, .skills p"
+
 );
 
 
 
+
+
 const observer =
+
 new IntersectionObserver((entries)=>{
 
 
@@ -192,6 +237,7 @@ if(entry.isIntersecting){
 
 entry.target.style.opacity="1";
 
+
 entry.target.style.transform=
 "translateY(0)";
 
@@ -202,23 +248,63 @@ entry.target.style.transform=
 });
 
 
+},{
+
+threshold:0.15
+
 });
 
 
 
-cards.forEach(card=>{
 
 
-card.style.opacity="0";
+revealElements.forEach(element=>{
 
-card.style.transform=
+
+element.style.opacity="0";
+
+
+element.style.transform=
 "translateY(40px)";
 
-card.style.transition=
-"all .6s ease";
+
+element.style.transition=
+"all .7s ease";
 
 
-observer.observe(card);
+
+observer.observe(element);
+
 
 
 });
+
+
+
+
+
+
+// =============================
+// Current Year Footer
+// =============================
+
+
+const year =
+new Date().getFullYear();
+
+
+const footer =
+document.querySelector("footer");
+
+
+if(footer){
+
+
+footer.innerHTML =
+`
+© ${year} Iftekhar Rahman.
+All Rights Reserved.
+`;
+
+
+}

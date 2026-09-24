@@ -1,14 +1,130 @@
+// ======================================
+// DYNAMIC ACHIEVEMENT GALLERY
+// ======================================
 
 
-// =============================
-// Smooth Scrolling
-// =============================
+const achievementContainer = 
+document.getElementById(
+"achievement-container"
+);
 
 
-document.querySelectorAll("nav a").forEach(link => {
+
+if(achievementContainer){
 
 
-    link.addEventListener("click", function(e){
+    achievements.forEach(item => {
+
+
+        achievementContainer.innerHTML += `
+
+
+        <div class="certificate">
+
+
+            <img src="assets/achievements/${item.image}"
+            alt="${item.title}">
+
+
+            <h3>
+            ${item.title}
+            </h3>
+
+
+            <p>
+            ${item.description}
+            </p>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+// ======================================
+// DYNAMIC CERTIFICATE GALLERY
+// ======================================
+
+
+
+const certificateContainer =
+
+document.getElementById(
+"certificate-container"
+);
+
+
+
+
+
+if(certificateContainer){
+
+
+
+    certificates.forEach(item=>{
+
+
+        certificateContainer.innerHTML += `
+
+
+        <div class="certificate">
+
+
+            <img src="assets/certificates/${item.image}"
+            alt="${item.title}">
+
+
+            <h3>
+            ${item.title}
+            </h3>
+
+
+            <p>
+            ${item.description}
+            </p>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+
+// ======================================
+// SMOOTH SCROLL
+// ======================================
+
+
+
+document.querySelectorAll("nav a")
+.forEach(link=>{
+
+
+    link.addEventListener("click",function(e){
 
 
         e.preventDefault();
@@ -22,11 +138,13 @@ document.querySelectorAll("nav a").forEach(link => {
 
         if(section){
 
+
             section.scrollIntoView({
 
                 behavior:"smooth"
 
             });
+
 
         }
 
@@ -41,48 +159,62 @@ document.querySelectorAll("nav a").forEach(link => {
 
 
 
-// =============================
-// Navbar Background Change
-// =============================
-
-
-window.addEventListener("scroll",()=>{
-
-
-    const nav =
-    document.querySelector("nav");
-
-
-    if(window.scrollY > 60){
-
-
-        nav.style.background =
-        "rgba(5,8,22,0.98)";
-
-
-    }
-
-    else{
-
-
-        nav.style.background =
-        "rgba(5,8,22,0.95)";
-
-
-    }
-
-
-});
 
 
 
+// ======================================
+// NAVBAR EFFECT
+// ======================================
+
+
+
+window.addEventListener(
+"scroll",
+()=>{
+
+
+const nav =
+document.querySelector("nav");
+
+
+
+if(window.scrollY > 50){
+
+
+nav.style.background =
+"rgba(5,8,22,0.98)";
+
+
+}
+
+
+else{
+
+
+nav.style.background =
+"rgba(5,8,22,0.95)";
+
+
+}
+
+
+}
+
+);
 
 
 
 
-// =============================
-// Typing Effect
-// =============================
+
+
+
+
+
+
+// ======================================
+// TYPING EFFECT
+// ======================================
+
 
 
 const roles = [
@@ -92,9 +224,9 @@ const roles = [
 
 "Embedded Systems Developer",
 
-"Robotics Researcher",
+"AI & Automation Enthusiast",
 
-"AI & Automation Enthusiast"
+"Robotics Researcher"
 
 
 ];
@@ -109,96 +241,110 @@ let deleting = false;
 
 
 
-const roleText =
+const roleElement =
 document.querySelector(".hero-text h2");
 
 
 
 
-function typeAnimation(){
+
+function typing(){
+
+
+if(!roleElement)
+return;
 
 
 
-    let current =
-    roles[roleIndex];
+let current =
+roles[roleIndex];
 
 
 
-    if(!deleting){
+
+if(!deleting){
+
+
+roleElement.textContent =
+current.substring(
+0,
+charIndex++
+);
 
 
 
-        roleText.textContent =
-        current.substring(
-            0,
-            charIndex++
-        );
+if(charIndex > current.length){
 
 
-
-        if(charIndex > current.length){
-
-
-            deleting=true;
+deleting=true;
 
 
-            setTimeout(typeAnimation,1500);
+setTimeout(
+typing,
+1500
+);
 
 
-            return;
-
-
-        }
-
-
-    }
-
-
-
-    else{
-
-
-        roleText.textContent =
-        current.substring(
-            0,
-            charIndex--
-        );
-
-
-
-        if(charIndex < 0){
-
-
-            deleting=false;
-
-
-            roleIndex++;
-
-
-
-            if(roleIndex >= roles.length){
-
-                roleIndex=0;
-
-            }
-
-
-        }
-
-
-    }
-
-
-
-    setTimeout(typeAnimation,
-    deleting ? 50 : 100);
+return;
 
 
 }
 
 
 
-typeAnimation();
+}
+
+else{
+
+
+roleElement.textContent =
+current.substring(
+0,
+charIndex--
+);
+
+
+
+if(charIndex < 0){
+
+
+deleting=false;
+
+
+roleIndex++;
+
+
+
+if(roleIndex >= roles.length){
+
+roleIndex=0;
+
+}
+
+
+}
+
+
+}
+
+
+
+
+setTimeout(
+
+typing,
+
+deleting ? 50 : 100
+
+);
+
+
+
+}
+
+
+
+typing();
 
 
 
@@ -206,9 +352,11 @@ typeAnimation();
 
 
 
-// =============================
-// Scroll Reveal Animation
-// =============================
+
+
+// ======================================
+// SCROLL REVEAL ANIMATION
+// ======================================
 
 
 
@@ -216,7 +364,7 @@ const revealElements =
 
 document.querySelectorAll(
 
-".card, .project-card, .certificate, .thesis, .skills p"
+".card, .certificate, .project-card, .thesis, .skills p"
 
 );
 
@@ -226,7 +374,9 @@ document.querySelectorAll(
 
 const observer =
 
-new IntersectionObserver((entries)=>{
+new IntersectionObserver(
+
+(entries)=>{
 
 
 entries.forEach(entry=>{
@@ -245,14 +395,21 @@ entry.target.style.transform=
 }
 
 
+
 });
 
 
-},{
+},
+
+{
 
 threshold:0.15
 
-});
+}
+
+);
+
+
 
 
 
@@ -276,7 +433,6 @@ element.style.transition=
 observer.observe(element);
 
 
-
 });
 
 
@@ -284,27 +440,32 @@ observer.observe(element);
 
 
 
-// =============================
-// Current Year Footer
-// =============================
 
 
-const year =
-new Date().getFullYear();
+
+
+// ======================================
+// FOOTER YEAR
+// ======================================
+
 
 
 const footer =
 document.querySelector("footer");
 
 
+
 if(footer){
 
 
 footer.innerHTML =
+
 `
-© ${year} Iftekhar Rahman.
+© ${new Date().getFullYear()}
+Iftekhar Rahman.
 All Rights Reserved.
 `;
+
 
 
 }

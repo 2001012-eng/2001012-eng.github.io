@@ -9,33 +9,52 @@
 body{
 
     font-family:'Segoe UI', Arial, sans-serif;
+
     background:#050816;
-    color:#ffffff;
+
+    color:white;
+
     line-height:1.6;
 
 }
 
 
-
-/* Navigation */
+/* =====================
+   NAVBAR
+===================== */
 
 
 nav{
 
     width:100%;
+
     position:fixed;
+
     top:0;
+
     left:0;
+
     z-index:1000;
 
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
 
     padding:20px 8%;
 
-    background:rgba(5,8,22,0.8);
-    backdrop-filter:blur(15px);
+
+    background:rgba(5,8,22,0.95);
+
+
+    backdrop-filter:blur(12px);
+
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.1);
 
 }
 
@@ -43,8 +62,12 @@ nav{
 
 .logo{
 
+    color:white;
+
     font-size:28px;
+
     font-weight:800;
+
     letter-spacing:2px;
 
 }
@@ -61,7 +84,9 @@ nav{
 nav ul{
 
     display:flex;
+
     gap:35px;
+
     list-style:none;
 
 }
@@ -71,9 +96,12 @@ nav ul{
 nav ul li a{
 
     color:white;
+
     text-decoration:none;
-    font-size:16px;
-    transition:0.3s;
+
+    font-weight:500;
+
+    transition:.3s;
 
 }
 
@@ -89,20 +117,31 @@ nav ul li a:hover{
 
 
 
-/* Hero Section */
+/* =====================
+ HERO SECTION
+===================== */
 
 
 .hero{
 
+
     min-height:100vh;
 
+
     display:flex;
+
+
     align-items:center;
-    justify-content:space-between;
 
-    padding:120px 8% 50px;
 
-    gap:50px;
+    justify-content:center;
+
+
+    gap:90px;
+
+
+    padding:120px 10% 60px;
+
 
 }
 
@@ -118,8 +157,15 @@ nav ul li a:hover{
 
 .hero-text h1{
 
+
     font-size:55px;
+
+
     line-height:1.2;
+
+
+    margin-bottom:15px;
+
 
 }
 
@@ -127,19 +173,26 @@ nav ul li a:hover{
 
 .hero-text h1 span{
 
+
     color:#00e5ff;
+
 
 }
 
 
 
+
 .hero-text h2{
 
-    margin-top:15px;
 
-    font-size:32px;
+    font-size:30px;
 
-    color:#b5c7ff;
+
+    color:#b7c7ff;
+
+
+    min-height:45px;
+
 
 }
 
@@ -147,29 +200,61 @@ nav ul li a:hover{
 
 .hero-text p{
 
+
     margin-top:20px;
+
 
     font-size:18px;
 
-    color:#c5c5c5;
+
+    color:#c8c8c8;
+
 
 }
 
+
+
+
+
+/* Profile Image */
 
 
 .hero-image img{
 
-    width:330px;
-    height:330px;
+
+    width:280px;
+
+
+    height:280px;
+
 
     object-fit:cover;
 
+
     border-radius:50%;
 
-    border:5px solid #00e5ff;
+
+    border:4px solid #00e5ff;
+
 
     box-shadow:
-    0 0 30px #00e5ff;
+
+
+    0 0 30px rgba(0,229,255,.7);
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.hero-image img:hover{
+
+
+    transform:scale(1.05);
+
 
 }
 
@@ -178,15 +263,22 @@ nav ul li a:hover{
 
 
 
-/* Buttons */
+/* =====================
+ BUTTONS
+===================== */
 
 
 .buttons{
 
-    margin-top:30px;
+
+    margin-top:35px;
+
 
     display:flex;
+
+
     gap:20px;
+
 
 }
 
@@ -194,19 +286,27 @@ nav ul li a:hover{
 
 .btn{
 
-    padding:12px 30px;
+
+    padding:13px 30px;
+
 
     border-radius:30px;
 
+
     background:#00e5ff;
+
 
     color:#000;
 
-    text-decoration:none;
 
     font-weight:bold;
 
+
+    text-decoration:none;
+
+
     transition:.3s;
+
 
 }
 
@@ -214,7 +314,9 @@ nav ul li a:hover{
 
 .btn:hover{
 
+
     transform:translateY(-5px);
+
 
 }
 
@@ -222,11 +324,15 @@ nav ul li a:hover{
 
 .outline{
 
+
     background:transparent;
+
 
     color:white;
 
+
     border:2px solid #00e5ff;
+
 
 }
 
@@ -234,9 +340,14 @@ nav ul li a:hover{
 
 
 
+/* SOCIAL ICONS */
+
+
 .social{
 
+
     margin-top:30px;
+
 
 }
 
@@ -244,13 +355,18 @@ nav ul li a:hover{
 
 .social a{
 
+
     color:white;
+
 
     font-size:25px;
 
+
     margin-right:20px;
 
+
     transition:.3s;
+
 
 }
 
@@ -258,7 +374,9 @@ nav ul li a:hover{
 
 .social a:hover{
 
+
     color:#00e5ff;
+
 
 }
 
@@ -268,12 +386,16 @@ nav ul li a:hover{
 
 
 
-/* Common Section */
+/* =====================
+ SECTIONS
+===================== */
 
 
 .section{
 
-    padding:90px 8%;
+
+    padding:90px 10%;
+
 
 }
 
@@ -281,29 +403,37 @@ nav ul li a:hover{
 
 .title{
 
+
     text-align:center;
+
 
     font-size:38px;
 
-    margin-bottom:40px;
 
     color:#00e5ff;
 
+
+    margin-bottom:40px;
+
+
 }
-
-
 
 
 
 .section p{
 
+
     max-width:900px;
+
 
     margin:auto;
 
+
     color:#cccccc;
 
+
     font-size:17px;
+
 
 }
 
@@ -311,7 +441,10 @@ nav ul li a:hover{
 
 
 
-/* Cards */
+
+/* =====================
+ CARDS
+===================== */
 
 
 .card,
@@ -321,15 +454,14 @@ nav ul li a:hover{
 
     background:
 
-    rgba(255,255,255,0.05);
+
+    rgba(255,255,255,.06);
 
 
     border:
 
-    1px solid rgba(255,255,255,0.15);
 
-
-    backdrop-filter:blur(10px);
+    1px solid rgba(255,255,255,.15);
 
 
     border-radius:20px;
@@ -353,15 +485,16 @@ nav ul li a:hover{
 
     transform:translateY(-10px);
 
+
     border-color:#00e5ff;
+
 
     box-shadow:
 
-    0 0 25px rgba(0,229,255,.3);
+    0 0 25px rgba(0,229,255,.25);
 
 
 }
-
 
 
 
@@ -369,9 +502,12 @@ nav ul li a:hover{
 .skill-card h3,
 .project-card h3{
 
+
     color:#00e5ff;
 
+
     margin-bottom:15px;
+
 
 }
 
@@ -380,19 +516,24 @@ nav ul li a:hover{
 
 
 
-/* Skills */
+/* =====================
+ SKILLS
+===================== */
 
 
 .grid{
 
+
     display:grid;
+
 
     grid-template-columns:
 
-    repeat(auto-fit,minmax(230px,1fr));
+    repeat(auto-fit,minmax(250px,1fr));
 
 
     gap:25px;
+
 
 }
 
@@ -400,7 +541,9 @@ nav ul li a:hover{
 
 .skill-card{
 
+
     text-align:center;
+
 
 }
 
@@ -408,11 +551,15 @@ nav ul li a:hover{
 
 .skill-card i{
 
+
     font-size:45px;
+
 
     color:#00e5ff;
 
+
     margin-bottom:20px;
+
 
 }
 
@@ -421,14 +568,16 @@ nav ul li a:hover{
 
 
 
-
-/* Projects */
+/* =====================
+ PROJECTS
+===================== */
 
 
 .projects{
 
 
     display:grid;
+
 
     grid-template-columns:
 
@@ -447,13 +596,12 @@ nav ul li a:hover{
 
     display:inline-block;
 
+
     margin-top:20px;
 
 
     color:#00e5ff;
 
-    font-size:14px;
-
 
 }
 
@@ -461,29 +609,25 @@ nav ul li a:hover{
 
 
 
-
-
-/* Contact */
-
-
-.contact{
-
-    text-align:center;
-
-}
-
-
+/* =====================
+ FOOTER
+===================== */
 
 
 footer{
 
+
     text-align:center;
+
 
     padding:25px;
 
+
     background:#02030a;
 
+
     color:#888;
+
 
 }
 
@@ -491,37 +635,43 @@ footer{
 
 
 
-/* Animation */
+/* =====================
+ ANIMATION
+===================== */
 
 
 .hero-text,
 .hero-image{
 
-    animation:
 
-    fadeIn 1.5s ease;
+    animation:fade 1.2s ease;
+
 
 }
 
 
 
-@keyframes fadeIn{
+@keyframes fade{
 
 
 from{
 
-opacity:0;
 
-transform:translateY(40px);
+    opacity:0;
+
+    transform:translateY(40px);
+
 
 }
 
 
 to{
 
-opacity:1;
 
-transform:translateY(0);
+    opacity:1;
+
+    transform:translateY(0);
+
 
 }
 
@@ -532,48 +682,62 @@ transform:translateY(0);
 
 
 
-
-
-/* Mobile Responsive */
+/* =====================
+ MOBILE
+===================== */
 
 
 @media(max-width:900px){
 
 
-
 nav{
+
 
     padding:20px;
 
+
 }
+
 
 
 nav ul{
 
+
     display:none;
 
+
 }
+
 
 
 .hero{
 
+
     flex-direction:column-reverse;
+
 
     text-align:center;
 
+
 }
+
 
 
 .hero-text h1{
 
+
     font-size:40px;
+
 
 }
 
 
+
 .hero-text h2{
 
-    font-size:25px;
+
+    font-size:24px;
+
 
 }
 
@@ -581,8 +745,12 @@ nav ul{
 
 .hero-image img{
 
-    width:250px;
-    height:250px;
+
+    width:220px;
+
+
+    height:220px;
+
 
 }
 
@@ -590,10 +758,11 @@ nav ul{
 
 .buttons{
 
+
     justify-content:center;
 
-}
 
+}
 
 
 }

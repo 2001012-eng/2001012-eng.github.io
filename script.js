@@ -66,6 +66,36 @@
   tick();
 })();
 
+// Lightbox: click any gallery/thesis image to view it full size
+(function () {
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<button class="lb-close" aria-label="Close">&times;</button><img alt="">';
+  document.body.appendChild(lb);
+
+  const lbImg = lb.querySelector('img');
+  const lbClose = lb.querySelector('.lb-close');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.g-card .thumb img, .thesis-panel .cover img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+})();
+
 // Stagger reveal timing slightly within each grid/gallery for a subtle cascade
 (function () {
   document.querySelectorAll('.gallery, .projects, .skills-grid, .focus-list').forEach(group => {
